@@ -182,8 +182,3 @@ stop = timeit.default_timer()
 print('Time: ', stop - start)  
 
 print('Done.')
-
-
-
-
-
