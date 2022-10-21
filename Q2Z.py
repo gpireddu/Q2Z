@@ -13,8 +13,6 @@ import numpy as np
 from scipy.interpolate import lagrange
 from numba import njit, prange
 
-import timeit
-
 complextype= complex
 
 @njit(parallel=True)
@@ -131,8 +129,6 @@ def WKACF(x,time):
     time= time[:len(time)//2]
     return ACF, time
 
-start = timeit.default_timer()
-
 print('Start')
 
 # Parameters
@@ -174,11 +170,7 @@ print('Admittance / Impedance computed')
 
 np.savetxt('Admittance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Y] (1/Ohm) / Im[Y] (1/Ohm)')
-np.savetxt('Impedance.out',np.column_stack((freq,Adm.real,Adm.imag)),
+np.savetxt('Impedance.out',np.column_stack((freq,Imp.real,Imp.imag)),
            header='Frequency (rad/s) / Re[Z] (Ohm) / Im[Z] (Ohm)')
-
-stop = timeit.default_timer()
-
-print('Time: ', stop - start)  
 
 print('Done.')
