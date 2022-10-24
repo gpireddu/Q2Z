@@ -1,7 +1,7 @@
 Q2Z
 ==========
 
-Q2Z.py is a Python code for computing the admittance / impedance spectra from the time series of the total electrode charges.
+Q2Z.py is a Python code for computing the frequency-dependent admittance / impedance spectra from the time series of the total electrode charges.
 
 ---
 # Reference
