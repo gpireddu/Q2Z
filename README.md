@@ -10,6 +10,10 @@ Q2Z.py is a Python code for computing the admittance / impedance spectra from th
 
 ---
 # Usage
+The electrode charge time series should be in the same folder and named ```total_charges.out```. 
+
+Simply run:
+
 ```python3 Q2Z.py```
 
 ---
