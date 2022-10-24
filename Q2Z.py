@@ -3,21 +3,27 @@
 # giovanni.pireddu(at)sorbonne-universite.fr
 #
 # Script to compute admittance / impedance from the time series of the charge
+# Reference: https://arxiv.org/abs/2206.13322 
+#
 # Assuming a MetalWalls format as described in:
 # https://gitlab.com/ampere2/metalwalls/-/wikis/output-files#total_charges.out
 #
 ##############################################################################
 
-
 import numpy as np
 from scipy.interpolate import lagrange
 from numba import njit, prange
+import sys
 
-complextype= complex
+import timeit
 
 @njit(parallel=True)
 def FilonLagrange(DFT,freq,Time,coeffs):
     """
+    ==========================================================================================
+    Computes the Fourier-Laplace transform using the coefficients from Lagrange interpolation
+    ==========================================================================================
+    
     Parameters
     ----------
     DFT : complex
@@ -54,14 +60,18 @@ def FilonLagrange(DFT,freq,Time,coeffs):
 
 def LagrangeInterpol(coeffs,Time,Signal):
     """   
+    ==========================================================================================
+    Computes the polynomial coefficients for the Lagrange interpolators
+    ==========================================================================================
+    
     Parameters
     ----------
     coeffs : float
         Coefficients from the Lagrange interpolation
     Time : float
         Array of time points (s)
-    Signal : TYPE
-        DESCRIPTION.
+    Signal : float
+        Array of values for the signal
 
     Returns
     -------
@@ -70,18 +80,21 @@ def LagrangeInterpol(coeffs,Time,Signal):
 
     """
     ipp= 0
-    for ip in range(1,len(Time)-1,2):
+    for ip in prange(1,len(Time)-1,2):
         x= Time[ip-1:ip+2]
         y= Signal[ip-1:ip+2]
         p= lagrange(x,y)   
-        cc= p.coef       
-        coeffs[ipp,:] = cc
+        coeffs[ipp,:] = p.coef
         ipp += 1
         
     return np.array(coeffs)
   
 def AdmFromQ(Time,QACF,freq):
     """
+    ==========================================================================================
+    Computes the admittance from the total charge autocorrelation function
+    ==========================================================================================
+    
     Parameters
     ----------
     Time : float
@@ -107,6 +120,10 @@ def AdmFromQ(Time,QACF,freq):
 
 def WKACF(x,time):
     """
+    ==========================================================================================
+    Computes the autocorrelation function of a time series using the Wiener-Khinchin theorem
+    ==========================================================================================
+    
     Parameters
     ----------
     x : float
@@ -142,13 +159,13 @@ e = 1.602176620898e-19 #C
 beta= 1/(k*temperature)
 
 # Load data
-Data= np.loadtxt('total_charges.out',skiprows=3)
+Data= np.loadtxt('total_charges_Big.out',skiprows=3)
 
 print('Data loaded')
 
 # Convert in SI units
 Charges= Data[:,1] * e
-Time= np.arange(0,len(Data),1) * 1E-15
+Time= np.arange(0,len(Data),1) * timeperstep
 
 # QACF
 QACF, redTime = WKACF(Charges,Time)
@@ -170,7 +187,9 @@ print('Admittance / Impedance computed')
 
 np.savetxt('Admittance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Y] (1/Ohm) / Im[Y] (1/Ohm)')
-np.savetxt('Impedance.out',np.column_stack((freq,Imp.real,Imp.imag)),
+np.savetxt('Impedance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Z] (Ohm) / Im[Z] (Ohm)')
+
+stop = timeit.default_timer()
 
 print('Done.')
