@@ -6,7 +6,7 @@ Q2Z.py is a Python code for computing the admittance / impedance spectra from th
 ---
 # Reference
 
-[G. Pireddu and Benjamin Rotenberg,arXiv:2206.13322](https://doi.org/10.48550/arXiv.2206.13322)
+[Giovanni Pireddu and Benjamin Rotenberg,arXiv:2206.13322](https://doi.org/10.48550/arXiv.2206.13322)
 
 ---
 # Usage
