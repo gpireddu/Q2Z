@@ -3,6 +3,8 @@ Q2Z
 
 Q2Z.py is a Python code for computing the frequency-dependent admittance / impedance spectra from the time series of the total electrode charges.
 
+This method is based on linear response theory and relies on the Fourier-Laplace transform of the time autocorrelation function of the total charges fluctuations.
+
 ---
 # Reference
 
