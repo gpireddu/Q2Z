@@ -12,7 +12,7 @@ This method is based on linear response theory and relies on the Fourier-Laplace
 
 ---
 # Usage
-The electrode charge time series should be in the same folder and named ```total_charges.out```. 
+The electrode charge time series should be in the same folder and named ```total_charges.out```. An example is provided in ```Example/total_charges.out``` for testing purposes only.
 
 Simply run:
 
