@@ -15,8 +15,6 @@ from scipy.interpolate import lagrange
 from numba import njit, prange
 import sys
 
-import timeit
-
 @njit(parallel=True)
 def FilonLagrange(DFT,freq,Time,coeffs):
     """
@@ -159,7 +157,7 @@ e = 1.602176620898e-19 #C
 beta= 1/(k*temperature)
 
 # Load data
-Data= np.loadtxt('total_charges_Big.out',skiprows=3)
+Data= np.loadtxt('total_charges.out',skiprows=3)
 
 print('Data loaded')
 
@@ -189,7 +187,5 @@ np.savetxt('Admittance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Y] (1/Ohm) / Im[Y] (1/Ohm)')
 np.savetxt('Impedance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Z] (Ohm) / Im[Z] (Ohm)')
-
-stop = timeit.default_timer()
 
 print('Done.')
