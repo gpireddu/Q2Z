@@ -185,7 +185,7 @@ print('Admittance / Impedance computed')
 
 np.savetxt('Admittance.out',np.column_stack((freq,Adm.real,Adm.imag)),
            header='Frequency (rad/s) / Re[Y] (1/Ohm) / Im[Y] (1/Ohm)')
-np.savetxt('Impedance.out',np.column_stack((freq,Adm.real,Adm.imag)),
+np.savetxt('Impedance.out',np.column_stack((freq,Imp.real,Imp.imag)),
            header='Frequency (rad/s) / Re[Z] (Ohm) / Im[Z] (Ohm)')
 
 print('Done.')
