@@ -3,7 +3,12 @@
 # giovanni.pireddu(at)sorbonne-universite.fr
 #
 # Script to compute admittance / impedance from the time series of the charge
-# Reference: https://arxiv.org/abs/2206.13322 
+# 
+# Reference: 
+# Frequency-Dependent Impedance of Nanocapacitors from Electrode Charge Fluctuations as a Probe of Electrolyte Dynamics
+# Giovanni Pireddu and Benjamin Rotenberg
+# Phys. Rev. Lett. 130, 098001, 2023 
+# DOI: https://doi.org/10.1103/PhysRevLett.130.098001
 #
 # Assuming a MetalWalls format as described in:
 # https://gitlab.com/ampere2/metalwalls/-/wikis/output-files#total_charges.out
