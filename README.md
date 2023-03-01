@@ -8,7 +8,25 @@ This method is based on linear response theory and relies on the Fourier-Laplace
 ---
 # Reference
 
-[Giovanni Pireddu and Benjamin Rotenberg,arXiv:2206.13322](https://doi.org/10.48550/arXiv.2206.13322)
+[Giovanni Pireddu and Benjamin Rotenberg,Physical Review Letters, 130, 098001, 2023](https://doi.org/10.48550/arXiv.2206.13322)
+
+Bibtex:
+```
+@article{PhysRevLett.130.098001,
+  title = {Frequency-Dependent Impedance of Nanocapacitors from Electrode Charge Fluctuations as a Probe of Electrolyte Dynamics},
+  author = {Pireddu, Giovanni and Rotenberg, Benjamin},
+  journal = {Phys. Rev. Lett.},
+  volume = {130},
+  issue = {9},
+  pages = {098001},
+  numpages = {7},
+  year = {2023},
+  month = {Feb},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.130.098001},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.130.098001}
+}
+```
 
 ---
 # Usage
