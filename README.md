@@ -8,7 +8,7 @@ This method is based on linear response theory and relies on the Fourier-Laplace
 ---
 # Reference
 
-[Giovanni Pireddu and Benjamin Rotenberg,Physical Review Letters, 130, 098001, 2023](https://doi.org/10.48550/arXiv.2206.13322)
+[Giovanni Pireddu and Benjamin Rotenberg,Physical Review Letters, 130, 098001, 2023](https://link.aps.org/doi/10.1103/PhysRevLett.130.098001)
 
 Bibtex:
 ```
